@@ -153,3 +153,95 @@ node_modules/
 # Arquivos temporários
 *.tmp
 *.swp
+
+---
+
+# criar pastas
+mkdir -p prompts/{civil,penal,trabalhista} \
+         modelos/{civil,penal,trabalhista}/{peticoes,recursos,pecas} \
+         referencias \
+         .github
+
+# arquivos semente úteis
+cat > prompts/_README.md << 'EOF'
+# Prompts – Convenções
+- Use tags no topo: ex. "tags: civil, contestação, consumidor".
+- Sempre descreva objetivo, entradas {{variaveis}} e formato de saída.
+- Inclua limites (tamanho, tom, citações).
+EOF
+
+cat > referencias/jurisprudencia.md << 'EOF'
+# Jurisprudência – Índice
+- Estruture por área/tema e inclua: tribunal, número, relator, data, e link.
+EOF
+
+cat > referencias/bibliografia.md << 'EOF'
+# Bibliografia
+- Livros, artigos, manuais e guias úteis por área.
+EOF
+
+# modelos exemplo (você pode editar depois)
+cat > modelos/civil/pecas/contestacao_consumidor.md << 'EOF'
+# Contestação (Consumidor) – Modelo
+tags: civil, contestação, consumidor
+## Objetivo
+Responder à petição inicial, impugnando fatos e pedidos.
+## Entradas
+{{processo_numero}}, {{foro}}, {{reu}}, {{fatos}}, {{documentos}}, {{tese}}
+## Estrutura
+- Síntese fática
+- Preliminares (pressupostos/condições)
+- Mérito (tese principal e subsidiárias)
+- Jurisprudência (com fontes)
+- Pedidos
+EOF
+
+cat > modelos/penal/pecas/defesa_previa.md << 'EOF'
+# Defesa Prévia – Modelo
+tags: penal, defesa, nulidades
+## Entradas
+{{processo_numero}}, {{nome}}, {{fatos}}, {{provas}}
+## Estrutura
+- Síntese e tipificação
+- Nulidades/prova ilícita
+- Medidas cautelares (alternativas)
+- Pedidos
+EOF
+
+cat > modelos/trabalhista/peticoes/contestacao.md << 'EOF'
+# Contestação – Modelo
+tags: trabalhista, contestação
+## Entradas
+{{reclamacao_numero}}, {{empresa}}, {{reclamante}}, {{datas}}, {{pedidos}}, {{documentos}}
+## Estrutura
+- Preliminares e prescrição
+- Mérito por pedidos (jornada, adicionais, verbas)
+- Base de cálculo e reflexos
+- Provas
+- Pedidos
+EOF
+
+# templates de colaboração (opcional)
+cat > .github/PULL_REQUEST_TEMPLATE.md << 'EOF'
+## Objetivo do PR
+- [ ] Novo modelo/prompt
+- [ ] Revisão/atualização
+## Checklist
+- [ ] Tags adicionadas
+- [ ] Placeholders {{variaveis}} revisados
+- [ ] Jurisprudência com fonte
+EOF
+
+cat > .github/ISSUE_TEMPLATE.md << 'EOF'
+## Título
+[Área] [Tipo] Breve descrição
+## Detalhes
+- Contexto:
+- O que falta:
+- Referências:
+EOF
+
+# versionar
+git add .
+git commit -m "estrutura inicial para civil, penal e trabalhista + modelos e referencias"
+git push
