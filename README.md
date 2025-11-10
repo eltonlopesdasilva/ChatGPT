@@ -130,3 +130,26 @@ Central de prompts, modelos e materiais para trabalhar com o ChatGPT.
 - Organizar **prompts reutilizáveis** (por área/tema).
 - Manter **modelos de peças/textos** e referências.
 - Documentar **fluxos** (como usar, padrões de saída, limites, aviso de confidencialidade).
+
+---
+
+# Sistemas e IDEs
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Ambientes e caches
+.env
+.env.*
+.venv/
+venv/
+__pycache__/
+*.log
+
+# Node (se usar scripts)
+node_modules/
+
+# Arquivos temporários
+*.tmp
+*.swp
