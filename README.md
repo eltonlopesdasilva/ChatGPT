@@ -34,3 +34,19 @@ ChatGPT
 
 ## Licença
 Defina a licença conforme necessidade (ex.: Private/All rights reserved).
+# ChatGPT – Base de Prompts & Modelos (Civil, Penal e Trabalhista)
+
+Repositório para organizar **prompts reutilizáveis**, **modelos de peças** e **referências** para uso com o ChatGPT nas áreas de **Processo Civil**, **Processo Penal** e **Processo Trabalhista**.
+
+---
+
+## Objetivos
+- Manter uma biblioteca versionada de **prompts** por área/assunto.
+- Armazenar **modelos de peças** com placeholders `{{variavel}}`.
+- Padronizar **formato de saída** e **fluxos de uso** no ChatGPT.
+- Centralizar **jurisprudência** e **referências**.
+
+---
+
+## Estrutura de pastas
+
