@@ -20,6 +20,26 @@ uvicorn ocr_service.main:app --host 0.0.0.0 --port 8000
 ```
 Acesse `http://localhost:8000/docs` para testar via Swagger.
 
+### Instalar como aplicativo no macOS
+1. Garanta as dependências de sistema no macOS (via Homebrew):
+   ```bash
+   brew install tesseract tesseract-lang por-language-data poppler
+   ```
+2. Crie o ambiente Python (se ainda não tiver):
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate
+   pip install -r requirements.txt
+   ```
+3. Gere um aplicativo `.app` com o PyInstaller (janela oculta, servidor rodando em 0.0.0.0:8000):
+   ```bash
+   pyinstaller --noconfirm --windowed --name "Conversor OCR" ocr_service/macos_app.py
+   ```
+   O binário ficará em `dist/Conversor OCR.app`. Ao abrir o app, o servidor inicia em segundo plano.
+4. Abra `http://localhost:8000/docs` no navegador e envie seus PDFs normalmente.
+
+> Dica: para remover mensagens de segurança do macOS em apps externos, vá em **Preferências do Sistema > Privacidade e Segurança** e permita a execução do app recém-criado.
+
 ## Uso da API
 - **POST `/ocr`**: envie um arquivo PDF no campo `file` (até 100 MB). Retorna texto concatenado e total de páginas processadas.
 - **GET `/health`**: verificação simples de saúde.
